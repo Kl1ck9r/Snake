@@ -1,6 +1,0 @@
-/home/ruslan/Рабочий стол/Snake1/Snake/build/CMakeFiles/edit_cache.dir
-/home/ruslan/Рабочий стол/Snake1/Snake/build/CMakeFiles/rebuild_cache.dir
-/home/ruslan/Рабочий стол/Snake1/Snake/build/snake/CMakeFiles/snake_lib.dir
-/home/ruslan/Рабочий стол/Snake1/Snake/build/snake/CMakeFiles/src_snake.dir
-/home/ruslan/Рабочий стол/Snake1/Snake/build/snake/CMakeFiles/edit_cache.dir
-/home/ruslan/Рабочий стол/Snake1/Snake/build/snake/CMakeFiles/rebuild_cache.dir
