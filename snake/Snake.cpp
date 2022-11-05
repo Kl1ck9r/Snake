@@ -1,12 +1,12 @@
 #include "Snake.hpp"
 
-std::vector<body_snake> m_snake;
 
-void Snake::SnakeInit() {
+void Snake::SnakeInit()
+{
   for (int i = 0; i < 5; i++) {
     body_snake m_body;
-    m_body.x = -10;
-    m_body.y = -10;
+    m_body.x = -3;
+    m_body.y = -5;
 
     m_snake.push_back(m_body);
   }
@@ -15,7 +15,8 @@ void Snake::SnakeInit() {
   m_snake[0].y = 3;
 }
 
-void Snake::ViewField() {
+void Snake::ViewField()
+{
   system("clear");
 
   for (int i = 0; i <= HEIGHT; i++) {
@@ -42,19 +43,18 @@ void Snake::ViewField() {
   std::cout << "SCORE: " << m_score << std::endl;
 }
 
-void Snake::GenerateFood() {
+void Snake::GenerateFood()
+{
   srand(time(nullptr));
 
-  xFruit = rand() % (WIDTH - 3);
-  yFruit = rand() % (HEIGHT - 3);
+  xFruit = 2+rand() % (WIDTH - 3);
+  yFruit = 2+rand() % (HEIGHT - 3);
 
   num_food = rand() % sizeof(type_food);
 }
 
-void Snake::MoveSnake() {
-  int l_x = m_snake[0].x;
-  int l_y = m_snake[0].y;
-
+void Snake::MoveSnake()
+{
   switch (m_dir) {
   case Direction::LEFT:
     m_snake[0].x--;
@@ -71,12 +71,10 @@ void Snake::MoveSnake() {
   default:
     break;
   }
-
-  for (int i = 0; i < m_snake.size(); i++) {
-  }
 }
 
-void Snake::Start() {
+void Snake::Start()
+{
   fd_set rfds;
   timeval timeout;
 
@@ -94,29 +92,21 @@ void Snake::Start() {
         FD_ISSET(STDIN_FILENO, &rfds)) {
       switch (getchar()) {
       case 100:
-      case 68:
-        if (m_dir != Direction::LEFT)
-          m_dir = Direction::RIGHT;
+      case 68: if (m_dir != Direction::LEFT) m_dir = Direction::RIGHT;
         break;
 
       case 83:
-      case 115:
-        if (m_dir != Direction::UP)
-          m_dir = Direction::DOWN;
+      case 115: if (m_dir != Direction::UP)m_dir = Direction::DOWN;
         break;
 
       case 65:
-      case 97:
-        if (m_dir != Direction::RIGHT)
-          m_dir = Direction::LEFT;
-
+      case 97: if (m_dir != Direction::RIGHT) m_dir = Direction::LEFT;
         break;
 
       case 119:
-      case 87:
-        if (m_dir != Direction::DOWN)
-          m_dir = Direction::UP;
+      case 87: if (m_dir != Direction::DOWN) m_dir = Direction::UP;
         break;
+
       default:
         break;
       }
@@ -132,7 +122,7 @@ void Snake::Start() {
 
       m_snake.push_back(snake_peace);
 
-      m_score += 7;
+      m_score += 4;
     }
 
     if (OfBoard()) {
@@ -144,19 +134,22 @@ void Snake::Start() {
   }
 }
 
-bool Snake::OfBoard() {
+bool Snake::OfBoard()
+{
   return m_snake[0].x == 0 || m_snake[0].x == WIDTH || m_snake[0].y == 0 ||
          m_snake[0].y == HEIGHT;
 }
 
-bool Snake::isBoard(int x, int y) {
+bool Snake::isBoard(int x, int y)
+{
   return x == WIDTH || y == HEIGHT || y == 0 || x == 0;
 }
 
 bool Snake::isFood(int x, int y) { return xFruit == x && yFruit == y; }
 
-bool Snake::isBody(int x, int y) {
-  for (int i = 0; i < m_snake.size(); i++) {
+bool Snake::isBody(int x, int y)
+{
+  for (std::size_t i = 0; i < m_snake.size(); i++) {
     if (m_snake[i].y == y && m_snake[i].x == x) {
       return true;
     }
@@ -165,8 +158,9 @@ bool Snake::isBody(int x, int y) {
   return false;
 }
 
-bool Snake::AteFood() {
-  for (int i = 0; i < m_snake.size(); i++) {
+bool Snake::AteFood()
+{
+  for (std::size_t i = 0; i < m_snake.size(); i++) {
     if (m_snake[i].x == xFruit && m_snake[i].y == yFruit) {
       return true;
     }

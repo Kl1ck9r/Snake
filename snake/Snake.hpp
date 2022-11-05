@@ -52,6 +52,8 @@ private:
 private:
   Direction m_dir = Direction::RIGHT;
   std::size_t num_food;
+  std::vector<body_snake> m_snake;
+
   const char type_food[3] = {'#', '%', '$'};
 };
 
