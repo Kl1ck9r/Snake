@@ -1,1 +1,1 @@
-# Snake A Simple Snake on Linux
+# A Simple Snake on Linux
