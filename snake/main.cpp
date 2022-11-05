@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Snake.hpp"
-using namespace std;
 
 int main()
 {
