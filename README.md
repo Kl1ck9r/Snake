@@ -1,2 +1,3 @@
-# Snake
-A Simple Game Snake
+## Snake
+
+A Simple Snake on Linux
